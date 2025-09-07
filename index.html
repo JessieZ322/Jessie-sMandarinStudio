@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chinese Flashcards</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* 登录页样式 */
+    #login-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+    #login-screen input {
+      padding: 8px;
+      margin: 10px;
+      font-size: 1rem;
+    }
+    #login-screen button {
+      padding: 8px 16px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+    #login-screen button:hover {
+      background: #0056b3;
+    }
+    #app {
+      display: none; /* 默认隐藏真正的内容 */
+    }
+  </style>
+</head>
+<body>
+  <!-- 登录页面 -->
+  <div id="login-screen">
+    <h2>请输入密码进入</h2>
+    <input type="password" id="password-input" placeholder="Enter password">
+    <button onclick="checkPassword()">进入</button>
+    <p id="error-message" style="color:red;"></p>
+  </div>
+
+  <!-- 学习应用 -->
+  <div id="app">
+    <h1>🍜 Chinese Flashcards – At the Restaurant</h1>
+    <div id="flashcard-container"></div>
+
+    <div class="controls">
+      <button id="prev-btn">⬅️ Prev</button>
+      <button id="flip-btn">🔄 Flip</button>
+      <button id="next-btn">➡️ Next</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/pinyin-pro"></script>
+  <script src="script.js"></script>
+  <script>
+    // 设置密码
+    const PASSWORD = "chee";
+
+    function checkPassword() {
+      const input = document.getElementById("password-input").value;
+      if (input === PASSWORD) {
+        document.getElementById("login-screen").style.display = "none";
+        document.getElementById("app").style.display = "block";
+      } else {
+        document.getElementById("error-message").innerText = "❌ 密码错误，请重试";
+      }
+    }
+  </script>
+</body>
+</html>
